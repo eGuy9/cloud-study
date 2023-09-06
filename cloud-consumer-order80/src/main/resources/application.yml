@@ -18,3 +18,5 @@ eureka:
 cloud-payment-service:
   ribbon:
     NFloadBalanceRuleClassName: com.netflix.loadbalance.RandomRule
+    ReadTimeout: 5000
+    ConnectTimeout: 5000 #超时控制

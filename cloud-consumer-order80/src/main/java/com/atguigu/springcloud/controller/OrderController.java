@@ -2,6 +2,7 @@ package com.atguigu.springcloud.controller;
 
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
+import com.atguigu.springcloud.feign.PaymentClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,15 +18,18 @@ public class OrderController {
     @Autowired
     private RestTemplate restTemplate;
 
+
+    @Autowired
+    private PaymentClient paymentClient;
+
     @GetMapping("/consumer/payment/create")
     public CommonResult<Payment> create(Payment payment){
-
-        return restTemplate.postForObject(url+"/payment/create",payment,CommonResult.class);
+        return paymentClient.create(payment);
     }
 
     @GetMapping("/consumer/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id){
-        return restTemplate.getForObject(url+"/payment/get/"+id,CommonResult.class);
+        return paymentClient.getPaymentById(id);
     }
 
 }

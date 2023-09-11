@@ -32,4 +32,15 @@ public class OrderController {
         return paymentClient.getPaymentById(id);
     }
 
+    @GetMapping("/consumer/payment/test1/{id}")
+    String test1(@PathVariable("id") Long id){
+        return paymentClient.test1(id);
+    }
+
+    @GetMapping("/consumer/payment/test2/{id}")
+    String test2(@PathVariable("id") Long id){
+        return paymentClient.test2(id);
+    }
+
+
 }

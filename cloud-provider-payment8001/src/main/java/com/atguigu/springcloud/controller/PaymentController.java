@@ -50,6 +50,22 @@ public class PaymentController {
             return new CommonResult(444,"查询失败",null);
         }
     }
+
+    @GetMapping(value = "/payment/test1/{id}")
+    public String test1(@PathVariable("id") Long id){
+        return paymentService.test1(id);
+    }
+    @GetMapping(value = "/payment/test2/{id}")
+    public String test2(@PathVariable("id") Long id){
+        return paymentService.test2(id);
+    }
+
+    @GetMapping(value = "/payment/breaker/{id}")
+    public String breaker(@PathVariable("id") Long id){
+        return paymentService.breaker(id);
+    }
+
+
     @GetMapping(value = "/payment/server")
     public Object discovery(){
         List<String> services = discoveryClient.getServices();

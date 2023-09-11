@@ -20,3 +20,7 @@ cloud-payment-service:
     NFloadBalanceRuleClassName: com.netflix.loadbalance.RandomRule
     ReadTimeout: 5000
     ConnectTimeout: 5000 #超时控制
+
+feign:
+  hystrix:
+    enabled: true
